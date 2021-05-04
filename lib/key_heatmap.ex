@@ -16,7 +16,7 @@ defmodule KeyHeatmap do
   end
 
   def process(_) do
-    IO.inspect("Argumentos inválidos")
+    IO.inspect("Invalid Arguments")
     {:error, :no_valid_args}
   end
 
