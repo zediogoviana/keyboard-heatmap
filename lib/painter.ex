@@ -41,8 +41,10 @@ defmodule Painter do
   defp draw_key(key, xx_position, yy_position, image, frequencies) do
     freq = frequencies[to_string(key.keycode)] || 0
 
+    {red, green, blue} = get_rgb_color(freq)
+
     image
-    |> custom("fill", "rgb(#{255 * freq},#{51 * freq},#{51 * freq})")
+    |> custom("fill", "rgb(#{red},#{green},#{blue})")
     |> roundedRectangle(
       xx_position * @key_size + 10,
       yy_position * @key_size + 10,
@@ -93,6 +95,18 @@ defmodule Painter do
         )
       }"
     )
+  end
+
+  defp get_rgb_color(0) do
+    {185, 185, 185}
+  end
+
+  defp get_rgb_color(freq) do
+    {
+      min(255, 200 * freq * 2 + 45),
+      max(0, 100 - 100 * freq * 2),
+      max(0, 150 - 245 * freq * 2)
+    }
   end
 
   defp key_width(%{size: size}) do
