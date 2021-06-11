@@ -45,7 +45,7 @@ defmodule Painter do
 
     image
     |> custom("fill", "rgb(#{red},#{green},#{blue})")
-    |> roundedRectangle(
+    |> rounded_rectangle(
       xx_position * @key_size + 10,
       yy_position * @key_size + 10,
       xx_position * @key_size + @key_size * key_width(key),
@@ -70,7 +70,7 @@ defmodule Painter do
     |> canvas("white")
   end
 
-  defp roundedRectangle(
+  defp rounded_rectangle(
          image,
          upper_left_x,
          upper_left_y,
@@ -82,18 +82,7 @@ defmodule Painter do
     image
     |> custom(
       "draw",
-      "roundRectangle #{
-        to_string(
-          :io_lib.format("~g,~g ~g,~g ~g,~g", [
-            upper_left_x / 1,
-            upper_left_y / 1,
-            lower_right_x / 1,
-            lower_right_y / 1,
-            border_w / 1,
-            border_h / 1
-          ])
-        )
-      }"
+      "roundRectangle #{to_string(:io_lib.format("~g,~g ~g,~g ~g,~g", [upper_left_x / 1, upper_left_y / 1, lower_right_x / 1, lower_right_y / 1, border_w / 1, border_h / 1]))}"
     )
   end
 
