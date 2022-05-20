@@ -17,8 +17,7 @@ defmodule KeyHeatmap.MixProject do
   def application do
     [
       applications: [:mogrify_draw],
-      extra_applications: [:logger],
-      mod: {KeyHeatmap.Application, []}
+      extra_applications: [:logger]
     ]
   end
 
